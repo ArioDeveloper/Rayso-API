@@ -1,37 +1,10 @@
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "rewrites": [
-    {
-      "source": "/",
-      "destination": "/index.json"
-    },
-    {
-      "source": "/api",
-      "destination": "/index.json"
-    }
-  ],
-  "github": {
-    "silent": true,
-    "autoJobCancelation": true
-  },
-  "headers": [
-    {
-      "source": "/api",
-      "headers": [
-        {
-          "key": "cache-control",
-          "value": "public, max-age=60, s-maxage=500, stale-while-revalidate=500, stale-if-error=500"
-        }
-      ]
-    },
-    {
-      "source": "/api",
-      "headers": [
-        {
-          "key": "cache-control",
-          "value": "public, max-age=60, s-maxage=86400, stale-while-revalidate=86400, stale-if-error=86400"
-        }
-      ]
-    }
-  ]
+   "version": 2,
+   "name": "music-album",
+   "builds": [
+      { "src": "index.js", "use": "@vercel/node" }
+   ],
+   "routes": [
+      { "src": "/(.*)", "dest": "/index.js" }
+   ]
 }
